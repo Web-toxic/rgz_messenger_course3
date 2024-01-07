@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(237, 217, 193);
+    color: rgb(67, 53, 22);
+    font-family: Arial;
+    line-height: 1.5;
+    margin: 0;
+}
+
+main {
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+header {
+    background: linear-gradient( to right, rgb(88, 75, 46), rgb(117, 104, 75),rgb(130, 121, 104));
+    color: #e3f9e2;
+    padding: 10px;
+    font-size: 14pt;
+}
+
+footer {
+    background: linear-gradient( to right, rgb(88, 75, 46), rgb(117, 104, 75),rgb(130, 121, 104));
+    color: #e3f9e2;
+    padding: 10px;
+    font-size: 14pt;
+    font-style: italic;
+    text-align: right;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+img {
+    padding: 20px 0;
+}
+
+a.active {
+    cursor: pointer;
+}
+
+.error {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: oblique;
+    color: crimson;
+}
+
+.menu {
+    color: rgb(61, 35, 8);
+    background-color: rgb(255, 248, 240);
+    padding: 10px;
+    font-size: 14pt;
+    border: 3px solid;
+    border-radius: 20px;
+    height: 20px;
+}
+
+.text_input_form{
+    font-size: 24px;
+    color: rgb(70, 33, 100);
+    font-weight: bold;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid rgba(142, 59, 236, 0.755);
+    border-radius: 0.25rem;
+    height: 40px;
+    width: 400px;
+}

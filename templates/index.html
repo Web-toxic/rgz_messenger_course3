@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block lab %}Расчётно-графическое задание{% endblock %}
+
+{% block main %}
+<body>
+    <h1>Мессенджер</h1>
+
+    {% if request.User %}
+        <a href="/messages">Перейти к сообщениям</a>
+    {% else %}
+        <a href="/login">Войти</a>
+        <a href="/register">Зарегистрироваться</a>
+    {% endif %}
+</body>
+{% endblock %}

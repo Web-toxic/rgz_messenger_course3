@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block lab %}Расчётно-графическое задание{% endblock %}
+
+{% block main %}
+<body>
+    <h1>Регистрация</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form action="/register" method="post">
+        <input type="text" name="username" placeholder="Логин">
+        <input type="password" name="password" placeholder="Пароль">
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+</body>
+{% endblock %}

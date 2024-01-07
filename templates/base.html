@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полина Топорнина. {% block lab %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    {% if request.cookies.get('color') or request.cookies.get('background-color') or request.cookies.get('font-size') %}
+    <style>
+        body {
+            background-color: {{request.cookies.get('background-color')}};
+            font-size: {{request.cookies.get('font-size')}};
+            color: {{request.cookies.get('color')}};
+        }
+    </style>
+    {% endif %}
+    {% block script %}{% endblock %}
+</head>
+<body>
+    <header>
+        WEB-программирование, часть 2. {{ self.lab() }}
+    </header>
+
+    <main>
+        <a href="/menu" style="background-color: beige; color: rgb(67, 53, 22);">menu</a>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+        &copy; Полина Топорнина, ФБИ-12, 3 курс, 2023
+    </footer>
+</body>
+</html>
