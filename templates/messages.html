@@ -9,7 +9,7 @@
     <ul>
         {% for user in users %}
             <li>
-                <a href="/messages/{{ user.id }}">{{ user.username }}</a>
+                <a href="/messages/{{ user.id }}">{{ user.login }}</a>
             </li>
         {% endfor %}
     </ul>
@@ -19,16 +19,15 @@
     <ul>
         {% for message in messages %}
             <li>
-                <strong>{{ message.sender.username }}</strong>: {{ message.message }}
-
-                <a href="/delete_message/{{ message.id }}">Удалить</a>
+                <strong>{{ message.sender.login }}</strong>: {{ message.text }}
+                <a href="/messages/delete/{{ message.id }}">Удалить</a>
             </li>
         {% endfor %}
     </ul>
 
-    <form action="/send_message" method="post">
-        <input type="hidden" name="receiver_id" value="{{ receiver_id }}">
-        <input type="text" name="message" placeholder="Сообщение">
+    <form action="/messages/send" method="post">
+        <input type="hidden" name="receiver_id" value="{{ user_id }}">
+        <input type="text" name="text" placeholder="Сообщение">
         <input type="submit" value="Отправить">
     </form>
 </body>

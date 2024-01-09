@@ -54,7 +54,9 @@ def login():
 @RGZ.route('/users', methods=['GET'])
 @login_required
 def users():
-    users = User.query.all()
+    for user in User.query.all():
+        user.password_hash = generate_password_hash(user.password)
+        db.session.commit()
     return render_template('users.html', users=users)
 
 
@@ -104,4 +106,45 @@ def delete_message():
     flash('Сообщение удалено.')
     return redirect('/messages')
 
+
+@RGZ.route('/admin/users/<int:user_id>', methods=['GET', 'POST'])
+@login_required
+def admin_user(user_id):
+    user = User.query.get(user_id)
+
+    if request.method == 'GET':
+        return render_template('admin/user_edit.html', user=user)  # Render form for editing
+    else:
+        login = request.form['login']
+        password = request.form['password']
+
+        if not login:
+            flash('Необходимо указать логин.')
+            return render_template('admin/user_edit.html', user=user)
+
+        user.login = login
+
+        if password:
+            user.password = password
+
+        db.session.commit()
+
+        flash('Данные сохранены.')
+        return redirect('/admin/users')
+
+
+@RGZ.route('/admin/users/delete/<int:user_id>', methods=['POST'])
+@login_required
+def admin_user_delete(user_id):
+    user = User.query.get(user_id)
+
+    if user is None:
+        flash('Пользователь не найден.')
+        return redirect('/admin/users')
+
+    db.session.delete(user)
+    db.session.commit()
+
+    flash('Пользователь удалён.')
+    return redirect('/admin/users')
 

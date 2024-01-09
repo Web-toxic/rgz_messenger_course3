@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block lab %}Расчётно-графическое задание{% endblock %}
+
+{% block main %}
+<body>
+    <h1>Администрирование</h1>
+
+    <ul>
+        {% for user in users %}
+            <li><a href="/admin/users/{{ user.id }}">{{ user.login }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>{{ user.login }}</h2>
+
+    <form action="/admin/users/{{ user.id }}" method="post">
+        <input type="text" name="login" value="{{ user.login }}">
+        <input type="password" name="password">
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+{% endblock %}
+
+
+
